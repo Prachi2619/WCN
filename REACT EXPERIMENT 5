@@ -1,0 +1,123 @@
+STEP 1: install Node.js
+STEP 2: npx create-react-app exp
+STEP 3: cd exp
+STep 4: npm start
+
+1) React Components,State,Props, And Events (copy and replace the following code in the app.js folder in the src)
+import React, { Component } from "react";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { yourName: '' };
+  }
+
+  changeText(event) {
+    this.setState({ yourName: event.target.value });
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Simple Event Example</h2>
+        <label htmlFor="name">Enter Your Name: </label>
+        <input
+          type="text"
+          id="yourName"
+          onChange={this.changeText.bind(this)}
+        />
+        <h4>You entered: {this.state.yourName}</h4>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+2) React Router Example
+STEP 5: npm install react-router-dom
+Replace this with App.js
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+        </ul>
+        <hr />
+        <Switch>
+          <Route exact path="/"><Home /></Route>
+          <Route path="/about"><About /></Route>
+          <Route path="/dashboard"><Dashboard /></Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function Home() { return (<div><h2>Home</h2></div>); }
+function About() { return (<div><h2>About</h2></div>); }
+function Dashboard() { return (<div><h2>Dashboard</h2></div>); }
+
+export default App;
+
+
+3) REACT REFS EXAMPLE
+REPLACE WITH APP.JS
+import React, { Component } from "react";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { sayings: "" };
+  }
+
+  update(e) {
+    this.setState({ sayings: this.refs.anything.value });
+  }
+
+  render() {
+    return (
+      <div>
+        Ram Says{" "}
+        <input type="text" ref="anything" onChange={this.update.bind(this)} />
+        <br />
+        <em>{this.state.sayings}</em>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+4) REACT KEYS EXAMPLE
+REPLACE WITH APP.JS
+import React from "react";
+
+function MenuItems(props) {
+  return <li>{props.item}</li>;
+}
+
+function Navmenu(props) {
+  const list = props.menuitems;
+  const updatedList = list.map((listItems) => {
+    return <MenuItems key={listItems.toString()} item={listItems} />;
+  });
+  return <ul>{updatedList}</ul>;
+}
+
+function App() {
+  const menuItems = [1, 2, 3, 4, 5];
+  return <Navmenu menuitems={menuItems} />;
+}
+
+export default App;
+
+
+
