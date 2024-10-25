@@ -1,4 +1,5 @@
-INDEX.HTML
+STEP 1: create an html file named 'index.html'
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +85,8 @@ INDEX.HTML
 </html>
 
 JAVASCRIPT
-userInput.js
+
+STEP 2: CREATE A JS FILE NAMED 'userInput.js'
 // Variables: Addition based on user input
 function displaySum() {
   let x = parseFloat(document.getElementById("var1").value);
